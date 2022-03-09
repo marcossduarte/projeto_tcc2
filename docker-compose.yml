@@ -1,0 +1,19 @@
+version: "3"
+services:
+    server:
+        build: .
+        command: python ./src/main.py
+        depends_on:
+            - bancoMariaDb
+        volumes:
+            - .:/usr/src/app
+        ports:
+            - 8000:8000
+    bancoMariaDb:
+        image: mariadb
+        restart: always
+        ports:
+            - "3306:3306"
+        environment:
+            - MYSQL_ROOT_PASSWORD=banco
+            - MYSQL_DATABASE=bdMariaDB
