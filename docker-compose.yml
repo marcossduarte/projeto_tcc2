@@ -3,6 +3,8 @@ services:
     server:
         build: .
         command: python ./src/main.py
+        environment:
+            database_host: "bancoMariaDb"
         depends_on:
             - bancoMariaDb
         volumes:
